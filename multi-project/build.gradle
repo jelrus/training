@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+}
+
+allprojects {
+    group = 'com.jelrus'
+    version = '1.0'
+    java.sourceCompatibility(JavaVersion.VERSION_1_8)
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter:5.9.2'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+project (':api') {
+    jar {
+        manifest {
+            attributes('Implementation-Title': project.name,
+                       'Implementation-Version': project.version,
+                       'Main-Class' : 'App')
+        }
+        from {
+            configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+    }
+
+    javadoc {
+        source = sourceSets.main.allJava
+    }
+}
