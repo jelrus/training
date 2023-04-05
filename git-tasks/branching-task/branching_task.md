@@ -29,7 +29,6 @@ Learn basic git commands by recreating steps from tutorial applied to task
 
 - Git commands
 
-
 | Syntax                                                                        | Description                                                                                                                         |
 |-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | `git init`                                                                    | creates empty git repository in working directory                                                                                   |
