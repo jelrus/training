@@ -36,8 +36,4 @@ project (':api') {
             configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
         }
     }
-
-    javadoc {
-        source = sourceSets.main.allJava
-    }
 }
