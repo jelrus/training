@@ -971,23 +971,23 @@ Commit changes on file `doubtingFile.txt` with `git commit -m "[first-clone/git_
 
 Open file `doubtingFile.txt` with `vim doubtingFile.txt`
 
-![](media/part2/step3/01c.png)
+![](media/part2/step3/01e.png)
 
 In opened window press `i` to enter edit mode. <br>
 Add `line 5` in `doubtingFile.txt`. <br>
 Press `ESC` to leave edit mode. Press `SHIFT + ZZ` to save changes and close window.
 
-![](media/part2/step3/02c1.png)<br><b>Before editing</b>
+![](media/part2/step3/02e1.png)<br><b>Before editing</b>
 
-![](media/part2/step3/02c2.png)<br><b>After editing</b>
+![](media/part2/step3/02e2.png)<br><b>After editing</b>
 
 Stage file `doubtingFile.txt` with `git add doubtingFile.txt`
 
-![](media/part2/step3/03c.png)
+![](media/part2/step3/03e.png)
 
 Commit changes on file `doubtingFile.txt` with `git commit -m "[first-clone/git_3](doubtingFile.txt) line 5 added"`
 
-![](media/part2/step3/04c.png)
+![](media/part2/step3/04e.png)
 
 -----------------------------------------------------------------------------------------------
 
