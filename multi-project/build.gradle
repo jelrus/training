@@ -6,11 +6,11 @@ allprojects {
     group = 'com.jelrus'
     version = '1.0'
     java.sourceCompatibility(JavaVersion.VERSION_1_8)
+
+    apply plugin: 'java'
 }
 
 subprojects {
-    apply plugin: 'java'
-
     repositories {
         mavenCentral()
     }
@@ -22,18 +22,5 @@ subprojects {
 
     test {
         useJUnitPlatform()
-    }
-}
-
-project (':api') {
-    jar {
-        manifest {
-            attributes('Implementation-Title': project.name,
-                       'Implementation-Version': project.version,
-                       'Main-Class' : 'App')
-        }
-        from {
-            configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-        }
     }
 }
