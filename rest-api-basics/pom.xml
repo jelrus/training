@@ -66,19 +66,39 @@
       <scope>test</scope>
     </dependency>
 
-    <!--CONNECTION-POOL-->
-    <dependency>
-      <groupId>c3p0</groupId>
-      <artifactId>c3p0</artifactId>
-      <version>0.9.1.2</version>
-    </dependency>
-
     <!--DB-CONNECTOR-->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.32</version>
       <scope>provided</scope>
+    </dependency>
+
+    <!--LOGS-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.33</version>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.10</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>1.2.10</version>
+    </dependency>
+
+    <!--APACHE-UTILS-->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.12.0</version>
     </dependency>
 
   </dependencies>

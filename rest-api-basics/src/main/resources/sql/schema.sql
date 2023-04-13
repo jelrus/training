@@ -12,8 +12,8 @@ create table rest_api_basics.gift_certificate(
     description text not null,
     price decimal(10, 2) not null,
     duration integer not null,
-    date_create datetime not null,
-    date_last_update datetime not null
+    create_date datetime not null,
+    last_update_date datetime not null
 );
 create table rest_api_basics.tag(
     id BIGINT auto_increment primary key,
