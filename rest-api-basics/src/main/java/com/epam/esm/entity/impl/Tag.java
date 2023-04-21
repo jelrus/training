@@ -44,4 +44,12 @@ public class Tag extends BaseEntity {
     public int hashCode() {
         return Objects.hash(super.hashCode(), name, giftCertificates);
     }
+
+    @Override
+    public String toString() {
+        return "Tag{id=" + getId() + '\'' +
+                "name='" + name + '\'' +
+                ", giftCertificates=" + giftCertificates +
+                '}';
+    }
 }

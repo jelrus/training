@@ -3,12 +3,16 @@ package com.epam.esm.utils.queries;
 import com.epam.esm.utils.search.dao.SearchParamRequest;
 
 public final class GiftCertificateQueries {
-
+    
     public static final String CREATE = "INSERT INTO gift_certificate VALUES (default, ?, ?, ?, ?, ?, ?);";
 
     public static final String FIND_BY_ID = "SELECT id, name, description, price, duration, create_date, " +
                                                    "last_update_date " +
                                             "FROM gift_certificate WHERE id = ?;";
+
+    public static final String FIND_BY_NAME = "SELECT id, name, description, price, duration, create_date, " +
+                                                     "last_update_date " +
+                                              "FROM gift_certificate WHERE name = ?;";
 
     public static final String UPDATE = "UPDATE gift_certificate " +
                                               "SET name = ?, description = ?, price = ?, duration = ?, " +
@@ -23,6 +27,8 @@ public final class GiftCertificateQueries {
 
     public static final String EXIST = "SELECT count(*) AS count FROM gift_certificate WHERE id = ?;";
 
+    public static final String EXIST_BY_NAME = "SELECT count(*) AS count FROM gift_certificate WHERE name = ?;";
+
     public static final String COUNT = "SELECT count(*) AS count FROM gift_certificate;";
 
     public static final String COUNT_TAGS_BY_GIFT_CERTIFICATE = "SELECT count(*) as count " +
@@ -31,9 +37,9 @@ public final class GiftCertificateQueries {
                                                                "ON t.id = gift_certificate_tag.tag_id " +
                                                                "WHERE gift_certificate_id = ?;";
 
-    public static final String FIND_TAGS_BY_GIFT_CERTIFICATE = "SELECT t.id, t.name from gift_certificate_tag" +
-                                                                  "JOIN tag t" +
-                                                                  "ON t.id = gift_certificate_tag.tag_id" +
+    public static final String FIND_TAGS_BY_GIFT_CERTIFICATE = "SELECT t.id, t.name from gift_certificate_tag " +
+                                                                  "JOIN tag t " +
+                                                                  "ON t.id = gift_certificate_tag.tag_id " +
                                                                   "WHERE gift_certificate_id = ?;";
 
     public static final String ADD_TAG = "INSERT INTO gift_certificate_tag values (default, ?, ?);";
@@ -77,7 +83,7 @@ public final class GiftCertificateQueries {
         getOrderSortDate(queryBuilder, spr);
         getOrderSortName(queryBuilder, spr);
         queryBuilder.append(";");
-
+        System.out.println(queryBuilder);
         return queryBuilder.toString();
     }
 

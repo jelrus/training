@@ -6,11 +6,15 @@ public final class TagQueries {
 
     public static final String FIND_BY_ID = "SELECT id, name FROM tag WHERE id = ?;";
 
+    public static final String FIND_BY_NAME = "SELECT id, name FROM tag WHERE name = ?;";
+
     public static final String DELETE = "DELETE FROM tag WHERE id = ?;";
 
     public static final String FIND_ALL = "SELECT t.id, t.name FROM tag;";
 
     public static final String EXIST = "SELECT count(*) AS count FROM tag WHERE id = ?;";
+
+    public static final String EXIST_BY_NAME = "SELECT count(*) AS count FROM tag WHERE name = ?;";
 
     public static final String COUNT = "SELECT count(*) AS count FROM tag;";
 

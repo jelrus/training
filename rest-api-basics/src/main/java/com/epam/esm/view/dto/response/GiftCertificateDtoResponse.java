@@ -1,16 +1,14 @@
-package com.epam.esm.entity.impl;
+package com.epam.esm.view.dto.response;
 
-import com.epam.esm.entity.base.BaseEntity;
-import com.fasterxml.jackson.annotation.JacksonAnnotation;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.epam.esm.entity.impl.GiftCertificate;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-//TODO: ISO8601 for dates in Java Class or in DB?
-public class GiftCertificate extends BaseEntity {
+public class GiftCertificateDtoResponse extends DtoResponse {
 
     private String name;
     private String description;
@@ -18,10 +16,17 @@ public class GiftCertificate extends BaseEntity {
     private Integer duration;
     private Date createDate;
     private Date lastUpdateDate;
-    private Set<Tag> tags;
+    private Set<TagDtoResponse> tags;
 
-    public GiftCertificate() {
-        super();
+    public GiftCertificateDtoResponse(GiftCertificate giftCertificate) {
+        super(giftCertificate.getId());
+        setName(giftCertificate.getName());
+        setDescription(giftCertificate.getDescription());
+        setPrice(giftCertificate.getPrice());
+        setDuration(giftCertificate.getDuration());
+        setCreateDate(giftCertificate.getCreateDate());
+        setLastUpdateDate(giftCertificate.getLastUpdateDate());
+        setTags(giftCertificate.getTags().stream().map(TagDtoResponse::new).collect(Collectors.toSet()));
     }
 
     public String getName() {
@@ -72,11 +77,11 @@ public class GiftCertificate extends BaseEntity {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public Set<Tag> getTags() {
+    public Set<TagDtoResponse> getTags() {
         return tags;
     }
 
-    public void setTags(Set<Tag> tags) {
+    public void setTags(Set<TagDtoResponse> tags) {
         this.tags = tags;
     }
 
@@ -84,8 +89,7 @@ public class GiftCertificate extends BaseEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        GiftCertificate that = (GiftCertificate) o;
+        GiftCertificateDtoResponse that = (GiftCertificateDtoResponse) o;
         return Objects.equals(name, that.name) &&
                Objects.equals(description, that.description) &&
                Objects.equals(price, that.price) &&
@@ -97,19 +101,6 @@ public class GiftCertificate extends BaseEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), name, description, price, duration, createDate, lastUpdateDate, tags);
-    }
-
-    @Override
-    public String toString() {
-        return "GiftCertificate{id=" + getId() + '\'' +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", duration=" + duration +
-                ", createDate=" + createDate +
-                ", lastUpdateDate=" + lastUpdateDate +
-                ", tags=" + tags +
-                '}';
+        return Objects.hash(name, description, price, duration, createDate, lastUpdateDate, tags);
     }
 }

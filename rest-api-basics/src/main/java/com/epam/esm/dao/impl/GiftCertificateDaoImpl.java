@@ -21,7 +21,7 @@ import java.util.Set;
 @Service
 public class GiftCertificateDaoImpl implements GiftCertificateDao {
 
-    private static final Logger LOGGER_ERROR = LoggerFactory.getLogger("error");
+    private final Logger LOGGER_ERROR = LoggerFactory.getLogger("error");
 
     private final DataSourceConnector connector;
 
@@ -36,13 +36,12 @@ public class GiftCertificateDaoImpl implements GiftCertificateDao {
 
         try (PreparedStatement ps = connector.getConnection().prepareStatement(GiftCertificateQueries.CREATE,
                                                                                Statement.RETURN_GENERATED_KEYS)) {
-            ps.setLong(1, gCert.getId());
-            ps.setString(2,gCert.getName());
-            ps.setString(3, gCert.getDescription());
-            ps.setBigDecimal(4, gCert.getPrice());
-            ps.setInt(5, gCert.getDuration());
-            ps.setTimestamp(6, new Timestamp(gCert.getCreateDate().getTime()));
-            ps.setTimestamp(7, new Timestamp(gCert.getLastUpdateDate().getTime()));
+            ps.setString(1,gCert.getName());
+            ps.setString(2, gCert.getDescription());
+            ps.setBigDecimal(3, gCert.getPrice());
+            ps.setInt(4, gCert.getDuration());
+            ps.setTimestamp(5, new Timestamp(gCert.getCreateDate().getTime()));
+            ps.setTimestamp(6, new Timestamp(gCert.getLastUpdateDate().getTime()));
             ps.executeUpdate();
             key = generateKey(ps);
         } catch (SQLException e) {
@@ -180,6 +179,35 @@ public class GiftCertificateDaoImpl implements GiftCertificateDao {
         }
 
         return count;
+    }
+
+    @Override
+    public Boolean existByName(String name) {
+        long count;
+
+        try (PreparedStatement ps = connector.getConnection().prepareStatement(GiftCertificateQueries.EXIST_BY_NAME)) {
+            ps.setString(1, name);
+            count = getCountFromResultSet(ps.executeQuery(), "count");
+        } catch (SQLException e) {
+            LOGGER_ERROR.error("[Gift Certificate] Exist by name operation failed for name " + name);
+            return false;
+        }
+
+        return count == 1;
+    }
+
+    @Override
+    public GiftCertificate findByName(String name) {
+        GiftCertificate gCert = new GiftCertificate();
+
+        try (PreparedStatement ps = connector.getConnection().prepareStatement(GiftCertificateQueries.FIND_BY_NAME)){
+            ps.setString(1, name);
+            gCert = GiftCertificateConverter.convertSingle(ps.executeQuery());
+        } catch (SQLException e) {
+            LOGGER_ERROR.error("[Gift Certificate] Find by name operation failed for name " + name);
+        }
+
+        return gCert;
     }
 
     @Override

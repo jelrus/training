@@ -67,4 +67,17 @@ public class SearchParamRequest {
     public void setSortName(String sortName) {
         this.sortName = sortName;
     }
+
+    @Override
+    public String toString() {
+        return "SearchParamRequest{" +
+                "tagName='" + tagName + '\'' +
+                ", partName='" + partName + '\'' +
+                ", partDescription='" + partDescription + '\'' +
+                ", orderDate=" + orderDate +
+                ", sortDate='" + sortDate + '\'' +
+                ", orderName=" + orderName +
+                ", sortName='" + sortName + '\'' +
+                '}';
+    }
 }

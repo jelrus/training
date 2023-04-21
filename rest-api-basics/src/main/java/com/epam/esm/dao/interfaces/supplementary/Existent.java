@@ -1,4 +1,4 @@
-package com.epam.esm.dao.interfaces.general;
+package com.epam.esm.dao.interfaces.supplementary;
 
 public interface Existent<T> {
 

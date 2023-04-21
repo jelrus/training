@@ -22,7 +22,7 @@ import java.util.Set;
 @Service
 public class TagDaoImpl implements TagDao {
 
-    private static final Logger LOGGER_ERROR = LoggerFactory.getLogger("error");
+    private final Logger LOGGER_ERROR = LoggerFactory.getLogger("error");
 
     private final DataSourceConnector connector;
 
@@ -37,8 +37,7 @@ public class TagDaoImpl implements TagDao {
 
         try (PreparedStatement ps = connector.getConnection().prepareStatement(TagQueries.CREATE,
                                                                                Statement.RETURN_GENERATED_KEYS)) {
-            ps.setLong(1, tag.getId());
-            ps.setString(2, tag.getName());
+            ps.setString(1, tag.getName());
             ps.executeUpdate();
             key = generateKey(ps);
         } catch (SQLException e) {
@@ -158,6 +157,35 @@ public class TagDaoImpl implements TagDao {
         }
 
         return count;
+    }
+
+    @Override
+    public Boolean existByName(String name) {
+        long count;
+
+        try (PreparedStatement ps = connector.getConnection().prepareStatement(TagQueries.EXIST_BY_NAME)) {
+            ps.setString(1, name);
+            count = getCountFromResultSet(ps.executeQuery(), "count");
+        } catch (SQLException e) {
+            LOGGER_ERROR.error("[Tag] Exist by name operation failed for name " + name);
+            return false;
+        }
+
+        return count == 1;
+    }
+
+    @Override
+    public Tag findByName(String name) {
+        Tag tag = new Tag();
+
+        try (PreparedStatement ps = connector.getConnection().prepareStatement(TagQueries.FIND_BY_NAME)){
+            ps.setString(1, name);
+            tag = TagConverter.convertSingle(ps.executeQuery());
+        } catch (SQLException e) {
+            LOGGER_ERROR.error("[Tag] Find by name operation failed for name " + name);
+        }
+
+        return tag;
     }
 
     @Override

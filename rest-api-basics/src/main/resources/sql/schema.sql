@@ -1,6 +1,4 @@
-drop schema if exists rest_api_basics;
-
-drop table if exists gift_certificate_tag_binding;
+drop table if exists gift_certificate_tag;
 drop table if exists gift_certificate;
 drop table if exists tag;
 
@@ -15,10 +13,12 @@ create table rest_api_basics.gift_certificate(
     create_date datetime not null,
     last_update_date datetime not null
 );
+
 create table rest_api_basics.tag(
     id BIGINT auto_increment primary key,
     name nvarchar(255) not null unique
 );
+
 create table rest_api_basics.gift_certificate_tag(
     id bigint not null auto_increment primary key,
     gift_certificate_id bigint not null,
