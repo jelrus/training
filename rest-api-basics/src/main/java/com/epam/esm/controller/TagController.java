@@ -1,71 +1,91 @@
 package com.epam.esm.controller;
 
-import com.epam.esm.entity.impl.GiftCertificate;
-import com.epam.esm.entity.impl.Tag;
-import com.epam.esm.service.interfaces.entity.TagService;
+import com.epam.esm.model.facade.interfaces.entity.TagFacade;
+import com.epam.esm.view.dto.request.impl.TagDtoRequest;
+import com.epam.esm.view.dto.response.impl.TagDtoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
+/**
+ * TagController class is the REST controller which consumes JSON as the request, forwards to relevant
+ * method in facade and produces JSON as the result of model's operations
+ */
 @RestController
-@RequestMapping("/tags")
+@RequestMapping("tags")
 public class TagController {
 
-    private final TagService tagService;
+    /**
+     * Field to hold TagFacade service
+     */
+    private final TagFacade tagFacade;
 
+    /**
+     * Constructs TagController with TagFacade object
+     * NOTE: If facade is null it will create and inject this dependency according to @Autowired annotation
+     *
+     * @param tagFacade GiftCertificateFacade object, which provides operations on gift certificates objects
+     */
     @Autowired
-    public TagController(TagService tagService) {
-        this.tagService = tagService;
+    public TagController(TagFacade tagFacade) {
+        this.tagFacade = tagFacade;
     }
 
+    /**
+     * Consumes request object
+     * Produces response object as the result of create operation
+     *
+     * @param tagReq TagDtoRequest request object for creation
+     * @return {@code ResponseEntity<TagDtoResponse>} created tag
+     */
     @PostMapping("/create")
-    public ResponseEntity<Tag> create(@RequestBody Tag tag){
-        tagService.create(tag);
-        return ResponseEntity.accepted().body(tag);
+    public ResponseEntity<TagDtoResponse> create(@RequestBody TagDtoRequest tagReq) {
+        return ResponseEntity.ok().body(tagFacade.create(tagReq));
     }
 
+    /**
+     * Consumes URL param
+     * Produces response object as the result of find by id operation
+     *
+     * @param id URL parameter, which holds tag id value
+     * @return {@code ResponseEntity<TagDtoResponse>} found tag
+     */
     @GetMapping("/{id}")
-    public ResponseEntity<Tag> findById(@PathVariable Long id) {
-        return ResponseEntity.accepted().body(tagService.findById(id));
+    public ResponseEntity<TagDtoResponse> findById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(tagFacade.findById(id));
     }
 
+    /**
+     * Consumes URL param
+     * Produces response object as the result of delete operation
+     *
+     * @param id URL parameter, which holds gift tag id value
+     * @return {@code ResponseEntity<TagDtoResponse>} deleted tag
+     */
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Tag> delete(@PathVariable Long id) {
-        Tag tag = tagService.findById(id);
-        tagService.delete(id);
-        return ResponseEntity.accepted().body(tag);
+    public ResponseEntity<TagDtoResponse> delete(@PathVariable Long id) {
+        return ResponseEntity.ok().body(tagFacade.delete(id));
     }
 
+    /**
+     * Produces set of response objects
+     *
+     * @return {@code ResponseEntity<Set<TagDtoResponse>>} set of all tags
+     */
     @GetMapping("/all")
-    public ResponseEntity<Set<Tag>> findAll() {
-        return ResponseEntity.accepted().body(tagService.findAll());
+    public ResponseEntity<Set<TagDtoResponse>> findAll() {
+        return ResponseEntity.ok().body(tagFacade.findAll());
     }
 
-    @GetMapping("/all/tagged")
-    public ResponseEntity<Set<Tag>> findAllCertificated() {
-        return ResponseEntity.accepted().body(tagService.findAllCertificated());
-    }
-
-    @GetMapping("/tag/{tagId}/gift/certificates")
-    public ResponseEntity<Set<GiftCertificate>> findAllGiftCertificatesByTag(@PathVariable Long tagId){
-        return ResponseEntity.accepted().body(tagService.findGiftCertificatesByTag(tagId));
-    }
-
-    @PutMapping("/{tagId}/gift/certificates/add/{giftCertificateId}")
-    public ResponseEntity<Tag> addTag(@PathVariable Long tagId, @PathVariable Long giftCertificateId) {
-        tagService.addGiftCertificate(tagId, giftCertificateId);
-        Tag tag = tagService.findById(tagId);
-        tag.setGiftCertificates(tagService.findGiftCertificatesByTag(tagId));
-        return ResponseEntity.accepted().body(tag);
-    }
-
-    @DeleteMapping("/{tagId}/gift/certificates/delete/{giftCertificateId}")
-    public ResponseEntity<Tag> deleteTag(@PathVariable Long tagId, @PathVariable Long giftCertificateId) {
-        tagService.deleteGiftCertificate(tagId, giftCertificateId);
-        Tag tag = tagService.findById(tagId);
-        tag.setGiftCertificates(tagService.findGiftCertificatesByTag(tagId));
-        return ResponseEntity.accepted().body(tag);
+    /**
+     * Produces set of response objects
+     *
+     * @return {@code ResponseEntity<Set<TagDtoResponse>>} set of certificated tags
+     */
+    @GetMapping("/all/certificated")
+    public ResponseEntity<Set<TagDtoResponse>> findAllCertificated()  {
+        return ResponseEntity.ok().body(tagFacade.findAllCertificated());
     }
 }

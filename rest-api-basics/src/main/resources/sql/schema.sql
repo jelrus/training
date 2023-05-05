@@ -6,17 +6,17 @@ create schema if not exists rest_api_basics;
 
 create table rest_api_basics.gift_certificate(
     id bigint not null auto_increment primary key,
-    name nvarchar(255) not null unique,
+    name nvarchar(255) not null,
     description text not null,
     price decimal(10, 2) not null,
     duration integer not null,
-    create_date datetime not null,
-    last_update_date datetime not null
+    create_date nvarchar(23) not null,
+    last_update_date nvarchar(23) not null
 );
 
 create table rest_api_basics.tag(
     id BIGINT auto_increment primary key,
-    name nvarchar(255) not null unique
+    name nvarchar(255) not null
 );
 
 create table rest_api_basics.gift_certificate_tag(
