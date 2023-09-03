@@ -6,7 +6,6 @@ import epam.com.esm.view.dto.request.impl.action.OrderDtoRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static epam.com.esm.utils.adjusters.action.OrderAdjuster.adjustFields;
 import static epam.com.esm.utils.adjusters.action.OrderAdjuster.adjustUser;
 import static epam.com.esm.utils.adjusters.products.GiftCertificateAdjuster.checkGiftCertificates;
 import static epam.com.esm.utils.adjusters.products.GiftCertificateAdjuster.convertToGiftCertificates;
@@ -31,19 +30,6 @@ public class OrderDtoVerifier {
      */
     public Order verifyCreate(OrderDtoRequest dto) {
         return verify(dto);
-    }
-
-    /**
-     * Verifies order dto request on update operation and adjusts if some fields empty
-     *
-     * @param dto provided order dto request
-     * @param preUpdate pre update order
-     * @return {@code Order} generated order
-     */
-    public Order verifyUpdate(OrderDtoRequest dto, Order preUpdate) {
-        Order updated = verify(dto);
-        adjustFields(preUpdate, updated);
-        return updated;
     }
 
     /**
