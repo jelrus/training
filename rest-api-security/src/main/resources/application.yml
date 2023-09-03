@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rest_api_security?useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: root
+    password: rootroot1A
+
+  sql:
+    init:
+      mode: never
+
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: false
+
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        enable_lazy_load_no_trans: true
+
+        jdbc:
+          batch_size: 50
+          fetch_size: 50
+          max_size: 25
+          min_size: 5
+
+  jackson:
+    default-property-inclusion: non_empty
+
+  security:
+    user:
+      name: admin
+      password: admin
+
+jwt:
+  secret: security-secret
+  lifetime: 1800000
+
+org:
+  hibernate:
+    envers:
+      audit_table_suffix: _audit
+      store_data_at_delete: true

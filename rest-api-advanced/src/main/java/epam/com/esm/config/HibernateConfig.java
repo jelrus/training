@@ -43,6 +43,66 @@ import java.util.Properties;
 public class HibernateConfig {
 
     /**
+     * Property name holder for Hibernate Dialect property
+     */
+    private static final String HIBERNATE_DIALECT = "hibernate.dialect";
+
+    /**
+     * Property name holder for Hibernate Envers Audit Tables Suffix property
+     */
+    private static final String HIBERNATE_SUFFIX = "org.hibernate.envers.audit_table_suffix";
+
+    /**
+     * Property name holder for Hibernate Envers Store Data At Delete property
+     */
+    private static final String HIBERNATE_STORE_AT_DELETE = "org.hibernate.envers.store_data_at_delete";
+
+    /**
+     * Property name holder for Data Source Init property
+     */
+    private static final String HIBERNATE_DATASOURCE_INITIALIZATION = "spring.jpa.defer-datasource-initialization";
+
+    /**
+     * Property name holder for Hibernate DDL Auto property
+     */
+    private static final String HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
+
+    /**
+     * Property name holder for Hibernate Show SQL property
+     */
+    private static final String HIBERNATE_SHOW_SQL = "hibernate.show_sql";
+
+    /**
+     * Property name holder for Hibernate Lazy Load No Trans property
+     */
+    private static final String HIBERNATE_ENABLE_LAZY_LOAD_NO_TRANS = "hibernate.enable_lazy_load_no_trans";
+
+    /**
+     * Property name holder for JDBC Max Size property
+     */
+    private static final String MAX_SIZE = "hibernate.c3p0.max_size";
+
+    /**
+     * Property name holder for JDBC Min Size property
+     */
+    private static final String MIN_SIZE = "hibernate.c3p0.min_size";
+
+    /**
+     * Property name holder for JDBC Batch Size property
+     */
+    private static final String BATCH_SIZE = "hibernate.jdbc.batch_size";
+
+    /**
+     * Property name holder for JDBC Fetch Size property
+     */
+    private static final String FETCH_SIZE = "hibernate.jdbc.fetch_size";
+
+    /**
+     * Property value holder, holds packages location for entity manager to scan
+     */
+    private static final String ENTITY_MANAGER_PACKAGES_TO_SCAN = "epam.com.esm";
+
+    /**
      * Value holder for JDBC URL property
      */
     @Value("${spring.datasource.url}")
@@ -131,66 +191,6 @@ public class HibernateConfig {
      */
     @Value("${spring.jpa.properties.hibernate.enable_lazy_load_no_trans}")
     private String lazyLoad;
-
-    /**
-     * Property name holder for Hibernate Dialect property
-     */
-    private static final String HIBERNATE_DIALECT = "hibernate.dialect";
-
-    /**
-     * Property name holder for Hibernate Envers Audit Tables Suffix property
-     */
-    private static final String HIBERNATE_SUFFIX = "org.hibernate.envers.audit_table_suffix";
-
-    /**
-     * Property name holder for Hibernate Envers Store Data At Delete property
-     */
-    private static final String HIBERNATE_STORE_AT_DELETE = "org.hibernate.envers.store_data_at_delete";
-
-    /**
-     * Property name holder for Data Source Init property
-     */
-    private static final String HIBERNATE_DATASOURCE_INITIALIZATION = "spring.jpa.defer-datasource-initialization";
-
-    /**
-     * Property name holder for Hibernate DDL Auto property
-     */
-    private static final String HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
-
-    /**
-     * Property name holder for Hibernate Show SQL property
-     */
-    private static final String HIBERNATE_SHOW_SQL = "hibernate.show_sql";
-
-    /**
-     * Property name holder for Hibernate Lazy Load No Trans property
-     */
-    private static final String HIBERNATE_ENABLE_LAZY_LOAD_NO_TRANS = "hibernate.enable_lazy_load_no_trans";
-
-    /**
-     * Property name holder for JDBC Max Size property
-     */
-    private static final String MAX_SIZE = "hibernate.c3p0.max_size";
-
-    /**
-     * Property name holder for JDBC Min Size property
-     */
-    private static final String MIN_SIZE = "hibernate.c3p0.min_size";
-
-    /**
-     * Property name holder for JDBC Batch Size property
-     */
-    private static final String BATCH_SIZE = "hibernate.jdbc.batch_size";
-
-    /**
-     * Property name holder for JDBC Fetch Size property
-     */
-    private static final String FETCH_SIZE = "hibernate.jdbc.fetch_size";
-
-    /**
-     * Property value holder, holds packages location for entity manager to scan
-     */
-    private static final String ENTITY_MANAGER_PACKAGES_TO_SCAN = "epam.com.esm";
 
     /**
      * Creates and configures datasource bean by setting driver, url, username and password properties
