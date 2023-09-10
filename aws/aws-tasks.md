@@ -245,7 +245,7 @@ Files loaded successfully
 
 Now open CloudShell and execute command for sql scripts located in previously created bucket
 
->aws s3  cp  <path-to-file-in-bucket> - | mysql -h <database-host> -P <database-port> -u <user-name> -p <password> <database-name>
+>aws s3  cp  %path-to-file-in-bucket% - | mysql -h %database-host% -P %database-port% -u %user-name% -p %password% %database-name%
 
 Lets run schema.sql
 
