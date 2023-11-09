@@ -1,0 +1,149 @@
+.register-form-wrapper {
+    width: 34.7vw;
+    height: 27.65vw;
+    background-color: #202020;
+    grid-area: lf;
+    border-radius: 0.86vw;
+    border: 0.11vw solid #444444;
+    display: flex;
+    flex-direction: column;
+    padding: 4%;
+}
+
+.register-form {
+    width: 100%;
+    height: 100%;
+    color: goldenrod;
+    display: grid;
+    grid-template-rows: 18% repeat(3, 1fr) 18%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2vw;
+    grid-template-areas:
+            'head head'
+            'ln fn'
+            'pd rpd'
+            'el as'
+            '. bs'
+}
+
+.register-form-header {
+    width: 100%;
+    grid-area: head;
+    color: goldenrod;
+    font-weight: bold;
+    font-size: 1.2vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.login-name-area {
+    grid-area: ln;
+}
+
+.password-area {
+    grid-area: pd;
+}
+
+.email-area {
+    grid-area: el;
+}
+
+.first-name-area {
+    grid-area: fn;
+}
+
+.password-repeat-area {
+    grid-area: rpd;
+}
+
+.address-area {
+    grid-area: as;
+}
+
+.login-name-area, .password-area, .email-area, .first-name-area, .password-repeat-area, .address-area {
+    width: 100%;
+    height: 4.7vw;
+    padding: 5% 2%;
+    display: grid;
+    grid-template-areas: 'head' 'input';
+}
+
+.input-head {
+    grid-area: head;
+    width: 100%;
+    font-size: 0.7vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    padding: 0.25% 0;
+}
+
+.input-head .material-icons {
+    font-size: 0.9vw;
+    padding: 2%;
+}
+
+.input-area {
+    grid-area: input;
+    width: 100%;
+    padding: 0.25% 0;
+    display: flex;
+    flex-direction: column;
+    border: 0;
+}
+
+.input-area input {
+    font-size: 0.7vw;
+    width: 100%;
+    padding: 2%;
+    border: 0;
+    background-color: #202020;
+    border-bottom: solid 0.05vw goldenrod;
+    color: white;
+}
+
+.button-area {
+    grid-area: bs;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.8vw;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.cancel-btn, .signup-btn {
+    font-size: 0.7vw;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+    border-radius: 0.75vw;
+    border: 0;
+    font-weight: bold;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #353535;
+}
+
+.cancel-btn:hover {
+    background-color: #303030;
+}
+
+.signup-btn {
+    background-color: #505050;
+}
+
+.signup-btn:hover {
+    background-color: #444444;
+}
+

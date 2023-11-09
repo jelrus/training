@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8" name="viewport" content="initial-scale=1"/>
+    <title>Add New Coupon</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/add-new-item.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body class="body-wrapper">
+<div class="body">
+
+  <ul class="nav-bar">
+    <li class="nav-side-menu">
+      <a href="#" class="material-icons">menu</a>
+    </li>
+
+    <li class="nav-logo">
+      <a href="#">
+        <img src="../resources/logo/logo-big.svg" alt="">
+      </a>
+    </li>
+
+    <li class="nav-search-bar">
+      <label class="search-bar">
+        <input type="text" placeholder="Search by item name">
+      </label>
+    </li>
+
+    <li class="nav-search-select">
+      <label>
+        <select>
+          <option value="none" selected disabled hidden>All Categories</option>
+          <option value="one">Category 1</option>
+          <option value="two">Category 2</option>
+          <option value="three">Category 3</option>
+          <option value="four">Category 4</option>
+        </select>
+      </label>
+    </li>
+
+    <li class="nav-fav">
+      <a href="#" class="material-icons">favorite</a>
+    </li>
+
+    <li class="nav-cart">
+      <a href="#" class="material-icons">shopping_cart</a>
+    </li>
+
+    <li class="nav-login">
+      <a href="#">Login</a>
+    </li>
+
+    <li class="nav-signup">
+      <a href="#">Sign Up</a>
+    </li>
+  </ul>
+
+  <div class="screen">
+    <div class="add-new-form-wrapper">
+      <div class="add-new-form">
+        <div class="add-new-form-header">
+          <span>Add New Coupon</span>
+        </div>
+
+        <div class="company-name-area">
+          <div class="input-head">
+            <span class="material-icons">business</span>
+            <span>Company</span>
+          </div>
+
+          <label class="input-area">
+            <input type="text" placeholder="Type company">
+          </label>
+        </div>
+
+        <div class="category-area">
+          <div class="input-head">
+            <span class="material-icons">category</span>
+            <span>Category</span>
+          </div>
+
+          <label>
+            <select>
+              <option value="none" selected disabled hidden>Category Name</option>
+              <option value="one">Category 1</option>
+              <option value="two">Category 2</option>
+              <option value="three">Category 3</option>
+              <option value="four">Category 4</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="validity-area">
+          <div class="input-head">
+            <span class="material-icons">event</span>
+            <span>Valid to</span>
+          </div>
+
+          <label class="input-area">
+            <input type="datetime-local" value="2023-12-12T00:00">
+          </label>
+        </div>
+
+        <div class="price-area">
+          <div class="input-head">
+            <span class="material-icons">paid</span>
+            <span>Price</span>
+          </div>
+
+          <label class="input-area">
+            <input type="text" placeholder="Type price">
+          </label>
+        </div>
+
+        <div class="images-area">
+          <div class="input-head">
+            <span class="material-icons">image</span>
+            <span>Images</span>
+          </div>
+
+          <label class="input-area">
+            <input type="file" accept="image/png, image/jpeg" multiple>
+            <span class="material-icons">collections</span>
+          </label>
+        </div>
+
+        <div class="item-name-area">
+          <div class="input-head">
+            <span class="material-icons">card_giftcard</span>
+            <span>Item Name</span>
+          </div>
+
+          <label class="input-area">
+            <input type="text" placeholder="Type item name">
+          </label>
+        </div>
+
+        <div class="short-desc-area">
+          <div class="input-head">
+            <span class="material-icons">receipt</span>
+            <span>Short Description</span>
+          </div>
+
+          <label class="input-area">
+            <textarea placeholder="Type short description"></textarea>
+          </label>
+        </div>
+
+        <div class="long-desc-area">
+          <div class="input-head">
+            <span class="material-icons">receipt_long</span>
+            <span>Long Description</span>
+          </div>
+
+          <label class="input-area">
+            <textarea placeholder="Type long description"></textarea>
+          </label>
+        </div>
+
+        <div class="button-area">
+          <button class="cancel-btn">BACK</button>
+          <button class="signup-btn">SAVE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"></div>
+
+</div>
+</body>
+</html>
