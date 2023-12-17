@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="initial-scale=1"/>
+    <title>Products</title>
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body class="body-wrapper">
+<div class="body">
+
+    <ul class="nav-bar">
+        <li class="nav-side-menu">
+            <a href="#" class="material-icons">menu</a>
+        </li>
+
+        <li class="nav-logo">
+            <a href="#">
+                <img src="../resources/logo/logo-big.svg" alt="">
+            </a>
+        </li>
+
+        <li class="nav-search-bar">
+            <label class="search-bar">
+                <input id="search-input" type="text" placeholder="Search by item name">
+            </label>
+        </li>
+
+        <li class="nav-search-select">
+            <label>
+                <select id="nav-search-select"></select>
+            </label>
+        </li>
+
+        <li class="nav-fav">
+            <a href="#" class="material-icons">favorite</a>
+        </li>
+
+        <li class="nav-cart">
+            <a href="#" class="material-icons">shopping_cart</a>
+        </li>
+
+        <li class="nav-login">
+            <a href="#">Login</a>
+        </li>
+
+        <li class="nav-signup">
+            <a href="#">Sign Up</a>
+        </li>
+    </ul>
+
+    <div id="screen" class="screen">
+        <div id="content" class="content">
+            <div id="categories" class="categories"></div>
+            <div id="products" class="products"></div>
+            <div id="page-nav-container" class="page-nav-container">
+                <button id="scroll-top-btn" class="scroll-top-btn" onclick="topFunction()">
+                    <span class="material-icons">keyboard_arrow_up</span>
+                </button>
+                <button id="scroll-bot-btn" class="scroll-bot-btn" onclick="botFunction(2000)">
+                    <span class="material-icons">keyboard_arrow_down</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer" class="footer"></div>
+    <script src="../js/data/categories.js"></script>
+    <script src="../js/data/certificates.js"></script>
+    <script src="../js/functions/scroll.js"></script>
+    <script src="../js/functions/search.js"></script>
+    <script src="../js/functions/pagination.js"></script>
+</div>
+</body>
+</html>

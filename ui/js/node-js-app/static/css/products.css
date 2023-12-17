@@ -1,0 +1,344 @@
+.screen {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: fit-content(100%);
+    color: goldenrod;
+    grid-template-areas: 'cat' 'prod' 'loader';
+}
+
+.categories {
+    grid-area: cat;
+    height: fit-content;
+    width: 100%;
+    padding: 0.7% 6.4% 0.7% 6.8%;
+    background-color: #202020;
+    border: 0;
+    border-bottom: 0.05vw solid #444444;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-row-gap: 2vw;
+    grid-auto-flow: row;
+    justify-content: center;
+    align-items: start;
+    justify-items: center;
+    align-content: center;
+}
+
+.category:hover {
+    color: #d9d6d6;
+}
+
+.category {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: goldenrod;
+}
+
+.category-cover {
+    position: relative;
+    width: 8vw;
+    height: 4vw;
+}
+
+.category-cover img {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+}
+.category-title {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 3% 3%;
+    font-size: 0.8vw;
+    font-weight: bold;
+    word-break:break-all;
+    color: goldenrod;
+    background-color: #202020;
+    border: 0 solid;
+    border-radius: 0.25vw;
+}
+
+.category-cover:hover img {
+    opacity: 0.6;
+}
+
+.category-cover:hover .category-title{
+    opacity: 1;
+}
+
+.products {
+    grid-area: prod;
+    display: grid;
+    width: 100%;
+    height: fit-content;
+    padding: 2% 6.4% 2% 6.8%;
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-gap: 2vw;
+    grid-auto-flow: row;
+    justify-items: center;
+    align-items: start;
+    justify-content: center;
+    align-content: space-between;
+}
+
+.product-wrapper {
+    width: 16vw;
+    height: 100%;
+    display: flex;
+    background-color: #252525;
+}
+
+.product:hover {
+    opacity: 0.6;
+}
+
+.product {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-cover {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #303030;
+}
+
+.product-cover img {
+    width: 100%;
+    height: 17vw;
+}
+
+.product-info-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: stretch;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-info-card a, .product-info-card div {
+    text-decoration: none;
+    color: goldenrod;
+}
+
+.product-title, .product-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+}
+
+.product-description {
+    -webkit-line-clamp: 2;
+}
+
+.product-fav, .product-expiration {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    word-break: break-all
+}
+
+.product-info-card-head, .product-info-card-mid, .product-info-card-tail {
+    width: 100%;
+    height: fit-content;
+    padding-left: 4%;
+    padding-right: 4%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: baseline;
+}
+
+.product-info-card-head {
+    grid-area: hd;
+    padding-top: 5%;
+    padding-bottom: 2.5%;
+}
+
+.product-title {
+    height: 100%;
+    width: 70%;
+    font-size: 0.9vw;
+    font-weight: bold;
+}
+
+.product-fav {
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background-color: inherit;
+}
+
+.product-fav span {
+    width: 100%;
+    height: 100%;
+    font-size: 0.9vw;
+    color: goldenrod;
+}
+
+.product-info-card-mid {
+    grid-area: md;
+    align-items: center;
+    padding-top: 2.5%;
+    padding-bottom: 5%;
+}
+
+.product-description {
+    height: 100%;
+    width: 65%;
+    color: #d9d6d6;
+    font-size: 0.55vw;
+    font-weight: bold;
+    text-align: left;
+}
+
+.product-expiration {
+    height: 100%;
+    font-size: 0.45vw;
+    text-align: right;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-expiration span, .product-description span {
+    color: #d9d6d6;
+}
+
+.product-info-card-tail {
+    grid-area: tl;
+    border-top: 0.07vw solid goldenrod;
+    display: flex;
+    align-items: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.product-cost {
+    width: 40%;
+    font-size: 1vw;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    word-break: break-all
+}
+
+.product-cart {
+    width: 50%;
+    background-color: inherit;
+    color: goldenrod;
+    font-size: 0.65vw;
+    font-weight: bold;
+    padding: 2%;
+    text-align: center;
+    border: 0.07vw solid goldenrod;
+    border-radius: 0.25vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-cart:hover {
+    background-color: #202020;
+}
+
+.page-nav-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 2%;
+    bottom: 1%;
+    transform: translate(-50%, -50%);
+}
+
+.scroll-top-btn, .scroll-bot-btn  {
+    height: 3vw;
+    width: 3vw;
+    display: none;
+    position: relative;
+    background-color: #202020;
+    border: 0.07vw solid #252525;
+    border-radius: 50%;
+    color: darkgoldenrod;
+    padding: 5%;
+    margin: 10%
+}
+
+.scroll-bot-btn {
+    display: block;
+}
+
+.scroll-top-btn:hover, .scroll-bot-btn:hover {
+    background-color: #303030;
+    color: #d9d6d6;
+}
+
+.scroll-top-btn .material-icons, .scroll-bot-btn .material-icons {
+    font-size: 1.35vw;
+}
+
+#loader {
+    grid-area: loader;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#loader img {
+    height: 4.5vw;
+    width: 5vw;
+}
+
+#empty-screen {
+    display: none;
+    flex-direction: column;
+    justify-content:  center;
+    align-items: center;
+    border: 0.1vw solid #444444;
+    padding: 2% 2%;
+    height: 30vw;
+    width: 78vw;
+    border-radius: 0.5vw;
+    color: #777777;
+}
+
+#empty-screen .material-icons{
+    font-size: 3vw;
+    height: fit-content;
+    padding: 0.75% 2%;
+}
+
+#empty-screen span {
+    font-size: 1vw;
+    height: fit-content;
+    padding: 0.75% 2%;
+}
