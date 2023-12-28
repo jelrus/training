@@ -1,0 +1,592 @@
+.pageContainerWrapper {
+    grid-area: lf;
+    display: block;
+    height: 100%;
+    width: 80%;
+}
+
+.pageContainer {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content fit-content(100%) min-content min-content;
+    grid-template-areas: "errLg" "sb" "itms" "pg";
+    grid-row-gap: 1vw;
+}
+
+.errorLogWrapper {
+    grid-area: errLg;
+    display: none;
+}
+
+.errorLog {
+    background-color: #d9d6d6;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+}
+
+.errorMessageWrapper {
+    padding: 0.5% 0;
+    display: flex;
+    width: 100%;
+    background-color: #181818;
+}
+
+.errorMessage {
+    display: flex;
+    width: 100%;
+    padding: 1.5%;
+    border: 0.02vw solid #444444;
+    border-radius: 0.25vw;
+    align-items: center;
+    background-color: #202020;
+}
+
+.errorMessageIcon {
+    color: #c51818;
+    padding: 0 1%;
+}
+
+.errorMessageBody {
+    color: goldenrod;
+    width: 100%;
+    text-align: left;
+    padding: 0 1%;
+    font-size: 0.75vw;
+}
+
+.errorMessageButton {
+    color: #c51818;
+    background-color: transparent;
+    border: 0;
+}
+
+.searchBar {
+    height: fit-content;
+    grid-area: sb;
+    display: grid;
+    grid-template-areas: "si si si si si sb addNew err";
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    border-radius: 0.2vw;
+}
+
+.searchArea {
+    grid-area: si;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    height: fit-content;
+    border: 0.05vw solid #444444;
+    border-top-left-radius: 0.2vw;
+    border-bottom-left-radius: 0.2vw;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 1%;
+    border: 0;
+    color: white;
+    background-color: #444444;
+    font-size: 0.7vw;
+}
+
+.searchButton {
+    grid-area: sb;
+    width: 100%;
+    height: fit-content;
+    padding: 4%;
+    color: darkgoldenrod;
+    background-color: #202020;
+    font-size: 0.75vw;
+    font-weight: bold;
+    border: 0.05vw solid #444444;
+    border-top-right-radius: 0.2vw;
+    border-bottom-right-radius: 0.2vw;
+}
+
+.searchButton:hover {
+    color: #d9d6d6;
+}
+
+.searchBtnWrapper {
+    display: flex;
+    height: fit-content;
+    width: 100%;
+    border-left: 0.05vw solid #444444;
+}
+
+.addNewButtonWrapper {
+    height: fit-content;
+    width: 100%;
+    grid-area: addNew;
+    display: flex;
+    padding: 0 5%;
+    justify-content: flex-end;
+}
+
+.errorsButtonWrapper {
+    height: fit-content;
+    width: 100%;
+    grid-area: err;
+    display: flex;
+    padding: 0 5%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.errorLogSize {
+    color: goldenrod;
+    font-size: 0.65vw;
+}
+
+.addNewButton, .errorsButton {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10%;
+    border: 0;
+    font-size: 1.25vw;
+    color: darkgoldenrod;
+}
+
+.errorsButton:hover {
+    color: #d9d6d6 !important;
+}
+
+.addNewButton:hover {
+    color: #d9d6d6;
+}
+
+.items {
+    grid-area: itms;
+    height: 100%;
+    color: #d9d6d6;
+}
+
+.itemsCell, .sortableHeader {
+    text-align: start;
+}
+
+.itemsHead {
+    color: goldenrod;
+    font-size: 0.65vw;
+    text-align: start;
+    border-bottom: 0.01vw solid goldenrod;
+}
+
+.sortButton {
+    display: inline;
+    color: goldenrod;
+    background: transparent;
+    border: 0;
+    padding: 0;
+}
+
+.sortButton:hover {
+    color: #d9d6d6;
+}
+
+.itemRow {
+    padding: 5% 0;
+    color: white;
+    font-size: 0.65vw;
+    text-align: start;
+}
+
+.itemRow tr td, .itemsHead tr th {
+    padding: 1%;
+    max-width: 5vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+.header {
+    padding: 0 5%;
+}
+
+.actionBtnWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.actionBtn {
+    height: fit-content;
+    width: fit-content;
+    border: 0;
+    color: darkgoldenrod;
+    background-color: transparent;
+    font-size: 0.8vw;
+    padding: 0;
+}
+
+.actionBtn:hover {
+    color: #d9d6d6;
+}
+
+.paginationContainer {
+    width: 100%;
+    grid-area: pg;
+    display: grid;
+    grid-template-areas: '. pages sz';
+    grid-template-columns: auto;
+    align-items: flex-end;
+    padding: 4% 0;
+}
+
+.pagesWrapper {
+    grid-area: pages;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageButton, .firstPage, .lastPage, .nextPage, .prevPage {
+    height: 1.75vw;
+    display: flex;
+    padding: 2%;
+    width: fit-content;
+    border: 0;
+    border-top: 0.02vw solid #444444;
+    border-bottom: 0.02vw solid #444444;
+    color: darkgoldenrod;
+    background-color: #202020;
+    font-size: 0.75vw;
+    align-items: center;
+}
+
+.firstPage {
+    border-top: 0.02vw solid #444444;
+    border-left: 0.02vw solid #444444;
+    border-bottom: 0.02vw solid #444444;
+    border-top-left-radius: 0.2vw;
+    border-bottom-left-radius: 0.2vw;
+}
+
+.firstPage:disabled, .firstPage[disabled],
+.prevPage:disabled, .prevPage[disabled],
+.nextPage:disabled, .nextPage[disabled],
+.prevPage:disabled, .prevPage[disabled]{
+    color: grey;
+}
+
+.lastPage {
+    border-top: 0.02vw solid #444444;
+    border-right: 0.02vw solid #444444;
+    border-bottom: 0.02vw solid #444444;
+    border-top-right-radius: 0.2vw;
+    border-bottom-right-radius: 0.2vw;
+}
+
+.lastPage:disabled {
+    color: grey;
+}
+
+.currentPageButton {
+    height: 1.75vw;
+    display: flex;
+    padding: 2%;
+    width: fit-content;
+    border: 0;
+    border-top: 0.02vw solid #444444;
+    border-bottom: 0.02vw solid #444444;
+    color: darkgoldenrod;
+    background-color: #151515;
+    font-size: 0.75vw;
+    align-items: center;
+    font-weight: bold;
+}
+
+.pageButton:hover, .currentPageButton:hover, .firstPage:hover, .lastPage:hover, .nextPage:hover, .prevPage:hover {
+    color: #d9d6d6;
+}
+
+.size {
+    grid-area: sz;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.size label {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.size label select {
+    background: #202020 url(../resources/icons/arrow_dropdown.svg) no-repeat right center;
+    color: goldenrod;
+    background-size: 1vw;
+    height: 1.75vw;
+    font-size: 0.75vw;
+    padding: 0 1vw 0 0.5vw;
+    border: 0.02vw solid #444444;
+    border-radius: 0.2vw;
+    margin: 0 0.1vw;
+    appearance: none;
+}
+
+.size select:hover {
+    color: #d9d6d6;
+}
+
+.addWindowWrapper, .deleteWindowWrapper, .deleteWindowWrapper {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.addWindow, .deleteWindow {
+    position: absolute;
+    top: 20%;
+    height: fit-content;
+    width: 21vw;
+    display: grid;
+    grid-template-areas: 'head' 'form' 'buttons';
+    grid-template-rows: 2vw auto 2vw;
+    padding: 1%;
+    background-color: #202020;
+    border: 0.02vw solid #444444;
+    border-radius: 0.2vw;
+    color: goldenrod;
+
+}
+
+.addWindowHeader, .deleteWindowHeader {
+    width: 100%;
+    grid-area: head;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.editWindowHeader {
+    width: 100%;
+    grid-area: head;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.addWindowHeader span, .deleteWindowHeader span {
+    width: 100%;
+    border-bottom: 0.02vw solid goldenrod;
+    padding: 1%;
+    font-weight: bold;
+    font-size: 0.95vw;
+}
+
+.editWindowHeader span {
+    width: 100%;
+    border-bottom: 0.02vw solid goldenrod;
+    padding: 1%;
+    font-weight: bold;
+    font-size: 0.95vw;
+    display: grid;
+    grid-template-areas: 'head imprt clr';
+    grid-template-columns: 1fr auto auto;
+}
+
+.editWindowTitle {
+    grid-area: head;
+    padding-left: 10%;
+}
+
+.addWindowFormWrapper, .deleteWindowFormWrapper {
+    height: 100%;
+    width: 100%;
+    grid-area: form;
+    display: flex;
+}
+
+.addWindowForm, .deleteWindowForm {
+    height: 100%;
+    width: 100%;
+    padding: 2%;
+    border-bottom: 0.02vw solid goldenrod;
+    display: flex;
+    flex-direction: column;
+}
+.deleteWindowForm {
+    padding: 5%;
+    font-size: 0.85vw;
+}
+
+.deleteWindowForm span {
+    font-weight: bold;
+}
+
+.fieldArea {
+    display: flex;
+    padding: 2%;
+    width: 100%;
+}
+
+.fieldHead {
+    padding-top: 0.5%;
+    font-size: 0.75vw;
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-items: left;
+    align-items: flex-start;
+}
+
+.inputArea {
+    width: 75%;
+    font-size: 0.75vw;
+    display: flex;
+}
+
+.inputArea input, .inputArea textarea {
+    border: 0;
+    padding: 1% 2%;
+    width: 100%;
+    display: flex;
+    font-size: 0.75vw;
+    color: white;
+    background-color: transparent;
+    border-bottom: 0.02vw solid goldenrod;
+}
+
+.inputArea textarea {
+    height: 3.5vw;
+    appearance: none;
+    resize: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+.inputArea button {
+    border: 0;
+    background-color: transparent;
+    color: goldenrod;
+    width: fit-content;
+    height: fit-content;
+    font-size: 0.85vw;
+
+}
+
+.inputArea button:hover {
+    color: #d9d6d6;
+}
+
+.tagArea {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputAreaTags {
+    width: 100%;
+    font-size: 0.75vw;
+}
+
+.addedTags, .viewTags {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 5% 2%;
+    font-size: 0.65vw;
+}
+
+.viewTags {
+    width: 80%;
+    padding: 0;
+}
+
+.addedTags span, .viewTags span {
+    padding-left: 2%;
+    display: flex;
+    flex-direction: row;
+    background-color: #181818;
+    border: 0.02vw solid #444444;
+    border-radius: 0.2vw;
+    margin: 0 2% 2% 0;
+    align-items: center;
+}
+
+.addedTags span div {
+    border: 0;
+}
+
+.viewTags span {
+    padding: 0 2%;
+}
+
+.addedTags span button {
+    background-color: transparent;
+    border: 0;
+    color: red;
+    font-weight: bold;
+    width: fit-content;
+    height: fit-content;
+}
+
+.addWindowButtonsWrapper {
+    grid-area: buttons;
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+}
+
+.addWindowButtons{
+    padding-top: 2%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.addWindowButtons button {
+    padding: 1%;
+    color: goldenrod;
+    background-color: #181818;
+    border: 0.02vw transparent;
+    border-radius: 0.2vw;
+    height: fit-content;
+    width: 4vw;
+    margin-right: 2%;
+    font-size: 0.85vw;
+}
+
+.addWindowButtons button:hover {
+    color: #d9d6d6;
+    background-color: #444444;
+}
+
+.importButton {
+    grid-area: imprt;
+}
+
+.clearButton {
+    grid-area: clr;
+}
+
+.importButton, .clearButton {
+    background-color: transparent;
+    border: 0;
+    color: goldenrod;
+}
+
+.importButton:hover, .clearButton:hover {
+    color: #d9d6d6;
+}

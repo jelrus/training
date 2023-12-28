@@ -1,0 +1,15 @@
+if (page === currentPage) {
+                            return (
+                                <button key={Number(page)} onClick={() => event(page)}
+                                        className={certificates.currentPageButton}>
+                                    {page}
+                                </button>
+                            )
+                        } else {
+                            return (
+                                <button key={Number(page)} onClick={() => event(page)}
+                                        className={certificates.pageButton}>
+                                    {page}
+                                </button>
+                            )
+                        }
